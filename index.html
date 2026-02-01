@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Aman Srivastava, portfolio, Aman, full stack dev, personal portfolio, portfolio design, portfolio website, personal portfolio, freelancing, freelancer, OPC, frontend, software engineering, graphic designing, logo, content creation, digital marketing" />
+    <meta name="description" content="Welcome to Aman Srivastava's Portfolio. Frontend Web Developer and Freelancer." />
+
+    <!-- CSS style linking -->
+    <link rel="stylesheet" href="./css/output.css">
+
+    <!-- AOS linking  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <!-- title  -->
+    <title>Aman Srivastava's Portfolio</title>
+
+    <!-- External styling  -->
+    <style>
+        .nav-link {
+            position: relative;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #ff7613;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ff7613;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* particle JS styling */
+        #particles-js {
+            width: 100%;
+            height: 100%;
+        }
+
+        #particles-js canvas {
+            display: block;
+            pointer-events: auto !important;
+        }
+
+        /* typing cursor in orange  */
+        .typed-cursor {
+            color: #ff7613;
+            font-weight: bold;
+        }
+
+        /* skills section  */
+        .skill-badge {
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #fff7ed;
+            color: #ff7613;
+            border: 1px solid #ff7613;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: #ff7613;
+            color: white;
+        }
+
+        .soft-card {
+            background-color: #f8fafc;
+            padding: 28px;
+            border-radius: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .soft-card:hover {
+            border-color: #ff7613;
+            box-shadow: 0 15px 35px rgba(255, 118, 19, 0.15);
+            transform: translateY(-6px);
+        }
+
+        .soft-card .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff7ed;
+            color: #ff7613;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .soft-card:hover .icon {
+            background-color: #ff7613;
+            color: white;
+        }
+
+        .soft-card h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .soft-card p {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* projects section styling  */
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 999px;
+            background: #fff7ed;
+            color: #ff7613;
+            border: 1px solid #ff7613;
+        }
+
+        .project-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff7613;
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* services section styling */
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 118, 19, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto;
+            background: #fff7ed;
+            color: #ff7613;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: #ff7613;
+            color: white;
+        }
+
+        /* experience section styling  */
+        .timeline-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(255, 118, 19, 0.15);
+        }
+
+        /* contact section styling  */
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff7613;
+            box-shadow: 0 0 0 3px rgba(255, 118, 19, 0.15);
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.35;
+            filter: blur(80px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Use gradient glow instead of solid color */
+        .shape1 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, #ff7613 0%, transparent 70%);
+            top: 10%;
+            left: -100px;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #ff7613 0%, transparent 70%);
+            bottom: 15%;
+            right: -80px;
+            animation-delay: 2s;
+        }
+
+        .shape3 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #ff7613 0%, transparent 70%);
+            top: 60%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        /* contact section styling  */
+        .footer-icon {
+            font-size: 18px;
+            color: #cbd5e1;
+            transition: 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            color: #ff7613;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar starts from here  -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center h-20">
+
+                <!-- Logo (Left) -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <lord-icon src="https://cdn.lordicon.com/hmabmtlg.json" trigger="hover"
+                        colors="primary:#ff7613,secondary:#0f172a" style="width:38px;height:38px">
+                    </lord-icon>
+
+                    <span class="text-2xl font-extrabold tracking-wide
+          bg-gradient-to-r from-[#ff7613] to-[#e65c00]
+          bg-clip-text text-transparent">
+                        Aman.
+                    </span>
+                </a>
+
+                <!-- Spacer pushes nav to right -->
+                <div class="ml-auto hidden md:flex items-center gap-10
+           font-medium text-slate-700 dark:text-gray-300">
+
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+
+                    <!-- Dark mode -->
+                    <!-- <button id="theme-toggle"
+          class="text-xl text-[#ff7613] hover:scale-110 transition">
+          🌙
+        </button> -->
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="menu-btn" class="ml-auto md:hidden text-2xl text-slate-700 dark:text-gray-300">
+                    ☰
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden backdrop-blur-xl bg-white/80 dark:bg-[#0f172a]/90">
+            <div class="px-6 py-6 space-y-4 font-medium">
+                <a href="#home" class="block nav-link">Home</a>
+                <a href="#about" class="block nav-link">About</a>
+                <a href="#skills" class="block nav-link">Skills</a>
+                <a href="#projects" class="block nav-link">Projects</a>
+                <a href="#services" class="block nav-link">Services</a>
+                <a href="#experience" class="block nav-link">Experience</a>
+                <a href="#contact" class="block nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+    <!-- Spacer -->
+    <div class="h-20"></div>
+    <!-- navbar ends here  -->
+
+    <!-- Hero Section starts from here -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-[#f8fafc]">
+
+        <!-- Particles -->
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+
+        <!-- Content Wrapper -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-24">
+
+            <div class="flex flex-col lg:flex-row 
+                items-center justify-between gap-16">
+
+                <!-- LEFT CONTENT (Text First Always) -->
+                <div class="order-1 lg:order-1 
+                  text-center lg:text-left 
+                  max-w-2xl">
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl 
+                   font-extrabold leading-tight 
+                   text-[#0f172a]" data-aos="fade-right" data-aos-duration="1000">
+
+                        Hi There 👋 <br>
+                        I'm
+                        <span class="text-[#ff7613]">
+                            Aman Srivastava
+                        </span>
+
+                    </h1>
+
+                    <p class="mt-6 text-lg sm:text-xl lg:text-2xl 
+                  text-[#334155] font-medium" data-aos="fade-up" data-aos-delay="300">
+
+                        I'm into
+                        <span class="text-[#ff7613] font-semibold typing-text"></span>
+
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="mt-10 flex flex-row 
+            items-center justify-center 
+            lg:justify-start gap-4 flex-wrap" data-aos="fade-up" data-aos-delay="600">
+
+                        <a href="#about" class="px-8 py-4 rounded-full font-semibold 
+                    text-white bg-[#ff7613] 
+                    hover:bg-[#e65c00] 
+                    transition duration-300 shadow-lg 
+                    hover:shadow-orange-400/40">
+                            About Me
+                        </a>
+
+                        <a href="#contact" class="px-8 py-4 rounded-full font-semibold 
+                    border-2 border-[#ff7613] 
+                    text-[#ff7613] 
+                    hover:bg-[#ff7613] hover:text-white 
+                    transition duration-300">
+                            Hire Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="order-2 lg:order-2 
+                  flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
+
+                    <div class="tilt-card">
+
+                        <img draggable="false" src="./assets/gif14.gif" alt="Hero Image" class="w-64 sm:w-80 md:w-96 lg:w-[420px] 
+                      rounded-3xl">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section Ends Here  -->
+
+    <!-- skills section starts from here -->
+    <section id="skills" class="py-24 bg-[#f8fafc]">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Heading -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    Skills & <span class="text-[#ff7613]">Abilities</span>
+                </h2>
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+                <p class="mt-6 max-w-3xl mx-auto text-center 
+          text-[#475569] text-lg leading-relaxed">
+                    I bring a strong blend of technical expertise and problem-solving ability to build scalable,
+                    efficient, and user-focused digital solutions.
+                </p>
+
+            </div>
+
+            <!-- Skill Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                <!-- Frontend -->
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                    data-aos="zoom-in">
+
+                    <h3 class="text-xl font-bold text-[#0f172a] mb-6">
+                        Frontend
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">Tailwind</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">React</span>
+
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                    data-aos="zoom-in" data-aos-delay="150">
+
+                    <h3 class="text-xl font-bold text-[#0f172a] mb-6">
+                        Backend
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Express</span>
+                        <span class="skill-badge">Django</span>
+                        <span class="skill-badge">REST APIs</span>
+
+                    </div>
+                </div>
+
+                <!-- Database & Tools -->
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+                    data-aos="zoom-in" data-aos-delay="300">
+
+                    <h3 class="text-xl font-bold text-[#0f172a] mb-6">
+                        Database & Tools
+                    </h3>
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <span class="skill-badge">MongoDB</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">GitHub</span>
+                        <span class="skill-badge">Vercel</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills Section -->
+            <div class="mt-10">
+                <div class="bg-white p-10 rounded-2xl shadow-md">
+
+                    <h3 class="text-2xl font-bold text-[#0f172a] mb-10 text-center" data-aos="fade-up">
+                        Professional <span class="text-[#ff7613]">Soft Skills</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- Card -->
+                        <div class="soft-card tilt-card" data-aos="zoom-in">
+                            <div class="icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Problem Solving</h4>
+                            <p>Strong analytical mindset with structured and efficient solution building.</p>
+                        </div>
+
+                        <div class="soft-card tilt-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Communication</h4>
+                            <p>Clear communication with clients and teams to ensure project success.</p>
+                        </div>
+
+                        <div class="soft-card tilt-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Team Collaboration</h4>
+                            <p>Experience working effectively in collaborative environments.</p>
+                        </div>
+
+                        <div class="soft-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Adaptability</h4>
+                            <p>Quick learner adaptable to new tools, technologies and workflows.</p>
+                        </div>
+
+                        <div class="soft-card tilt-card" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Time Management</h4>
+                            <p>Efficient planning and prioritization to meet deadlines consistently.</p>
+                        </div>
+
+                        <div class="soft-card tilt-card" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Client-Focused</h4>
+                            <p>Delivering solutions aligned with business goals and user needs.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- skills section ends here  -->
+
+    <!-- projects section starts from here  -->
+    <section id="projects" class="py-24 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Heading -->
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    Featured <span class="text-[#ff7613]">Projects</span>
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-[#475569] text-lg">
+                    A selection of projects showcasing my expertise in full-stack development, problem-solving, and
+                    modern web technologies.
+                </p>
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Project Card 1 -->
+                <div class="project-card tilt-card" data-aos="zoom-in">
+
+                    <img src="./assets/project1.png" alt="Project" class="rounded-t-2xl">
+
+                    <div class="p-6">
+
+                        <h3 class="text-xl font-bold text-[#0f172a]">
+                            StayFinder
+                        </h3>
+
+                        <p class="mt-3 text-[#475569] text-sm leading-relaxed">
+                            A full-stack Airbnb-style platform with authentication, booking system, and responsive UI.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+
+                        <div class="flex justify-between mt-6">
+                            <a href="#" class="project-link">Live</a>
+                            <a href="#" class="project-link">Code</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card tilt-card" data-aos="zoom-in" data-aos-delay="150">
+
+                    <img src="./assets/project2.png" alt="Project" class="rounded-t-2xl">
+
+                    <div class="p-6">
+
+                        <h3 class="text-xl font-bold text-[#0f172a]">
+                            Him Spices Website
+                        </h3>
+
+                        <p class="mt-3 text-[#475569] text-sm leading-relaxed">
+                            E-commerce product website with cart functionality and WhatsApp order integration.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+
+                        <div class="flex justify-between mt-6">
+                            <a href="#" class="project-link">Live</a>
+                            <a href="#" class="project-link">Code</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
+
+                    <img src="./assets/project3.png" alt="Project" class="rounded-t-2xl">
+
+                    <div class="p-6">
+
+                        <h3 class="text-xl font-bold text-[#0f172a]">
+                            AI Prediction Model
+                        </h3>
+
+                        <p class="mt-3 text-[#475569] text-sm leading-relaxed">
+                            Machine learning project predicting outcomes using Scikit-learn and Python.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">ML</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+
+                        <div class="flex justify-between mt-6">
+                            <a href="#" class="project-link">Live</a>
+                            <a href="#" class="project-link">Code</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="./projects" class="inline-flex items-center gap-2 
+                px-8 py-4 rounded-full font-semibold 
+                text-white bg-[#ff7613] 
+                hover:bg-[#e65c00] 
+                transition duration-300 shadow-lg 
+                hover:shadow-orange-400/40">
+                    View All
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- projects ends here  -->
+
+    <!-- services section starts from here  -->
+    <section id="services" class="py-24 bg-gradient-to-br from-[#f8fafc] via-white to-[#fff7ed]">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Heading -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    My <span class="text-[#ff7613]">Services</span>
+                </h2>
+
+                <p class="mt-6 max-w-3xl mx-auto text-[#475569] text-lg leading-relaxed">
+                    I offer end-to-end digital solutions to help businesses build a strong online presence and achieve
+                    scalable growth.
+                </p>
+
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Service 1 -->
+                <div class="service-card tilt-card" data-aos="zoom-in">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Website Development</h3>
+                    <p>
+                        Responsive, fast, and modern websites built with scalable architecture tailored to your business
+                        needs.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce Solutions</h3>
+                    <p>
+                        Complete online store setup with product management, payment integration, and optimized user
+                        experience.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive UI/UX Design</h3>
+                    <p>
+                        Clean, user-focused interface design ensuring seamless performance across mobile, tablet, and
+                        desktop.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend & API Development</h3>
+                    <p>
+                        Secure and scalable backend systems with RESTful APIs for dynamic and high-performance
+                        applications.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI & Automation Solutions</h3>
+                    <p>
+                        Intelligent systems and automation tools powered by machine learning to optimize business
+                        processes.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="750">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Website Optimization & Deployment</h3>
+                    <p>
+                        Performance optimization, SEO basics, hosting setup, and smooth deployment to ensure fast load
+                        times.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="#contact" class="inline-flex items-center gap-2 
+                px-8 py-4 rounded-full font-semibold 
+                text-white bg-[#ff7613] 
+                hover:bg-[#e65c00] 
+                transition duration-300 shadow-lg 
+                hover:shadow-orange-400/40">
+                    Let’s Work Together
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- services section ends here  -->
+
+    <!-- experience section starts from here  -->
+    <section id="experience" class="py-24 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
+
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+            <!-- Heading -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    My <span class="text-[#ff7613]">Experience</span>
+                </h2>
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Timeline Wrapper -->
+            <div class="relative">
+
+                <!-- Vertical Line -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 
+                  w-1 bg-[#ff7613]/30 h-full"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="mb-16 md:mb-24 flex flex-col md:flex-row items-center">
+
+                    <div class="md:w-1/2 md:pr-12 text-center md:text-right" data-aos="fade-right">
+
+                        <div class="timeline-card">
+                            <h3 class="text-xl font-bold text-[#0f172a]">
+                                NIK Enterprises Pvt. Ltd.
+                            </h3>
+                            <p class="text-[#ff7613] font-semibold mt-2">
+                                Full Stack Developer | Internship
+                            </p>
+                            <p class="text-[#475569] mt-2">
+                                Aug 2022 – Oct 2022
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Circle -->
+                    <div class="hidden md:flex w-6 h-6 bg-[#ff7613] rounded-full 
+                    border-4 border-white shadow-md 
+                    absolute left-1/2 transform -translate-x-1/2"></div>
+
+                    <div class="md:w-1/2"></div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="mb-16 md:mb-24 flex flex-col md:flex-row items-center">
+
+                    <div class="md:w-1/2"></div>
+
+                    <div class="md:w-1/2 md:pl-12 text-center md:text-left" data-aos="fade-left">
+
+                        <div class="timeline-card">
+                            <h3 class="text-xl font-bold text-[#0f172a]">
+                                QuickAttend (Python OpenCV)
+                            </h3>
+                            <p class="text-[#ff7613] font-semibold mt-2">
+                                Python ML | Personal Project
+                            </p>
+                            <p class="text-[#475569] mt-2">
+                                Sept 2023 – Nov 2023
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Circle -->
+                    <div class="hidden md:flex w-6 h-6 bg-[#ff7613] rounded-full 
+                    border-4 border-white shadow-md 
+                    absolute left-1/2 transform -translate-x-1/2"></div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="flex flex-col md:flex-row items-center">
+
+                    <div class="md:w-1/2 md:pr-12 text-center md:text-right" data-aos="fade-right">
+
+                        <div class="timeline-card">
+                            <h3 class="text-xl font-bold text-[#0f172a]">
+                                Edunet Foundation
+                            </h3>
+                            <p class="text-[#ff7613] font-semibold mt-2">
+                                AI & ML | AICTE–Microsoft–SAP Internship
+                            </p>
+                            <p class="text-[#475569] mt-2">
+                                Dec 2024 – Jan 2025
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Circle -->
+                    <div class="hidden md:flex w-6 h-6 bg-[#ff7613] rounded-full 
+                    border-4 border-white shadow-md 
+                    absolute left-1/2 transform -translate-x-1/2"></div>
+
+                    <div class="md:w-1/2"></div>
+                </div>
+
+            </div>
+
+            <!-- View All -->
+            <div class="text-center mt-20" data-aos="fade-up">
+                <a href="./experience" class="inline-flex items-center gap-2 
+                px-8 py-4 rounded-full font-semibold 
+                text-white bg-[#ff7613] 
+                hover:bg-[#e65c00] 
+                transition duration-300 shadow-lg 
+                hover:shadow-orange-400/40">
+                    View All
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- experience section ends here  -->
+
+    <!-- About section starts from here  -->
+    <section id="about" class="py-24 bg-white">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Section Heading -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    About <span class="text-[#ff7613]">Me</span>
+                </h2>
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                <!-- LEFT IMAGE -->
+                <div class="flex justify-center lg:justify-start" data-aos="fade-right">
+
+                    <div class="tilt-card">
+                        <img draggable="false" src="./assets/img bg.png" alt="About Image" class="w-64 sm:w-80 md:w-96 lg:w-[380px] 
+                      rounded-3xl shadow-2xl 
+                      border border-[#ff7613]/30">
+                    </div>
+
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="max-w-2xl text-center lg:text-left" data-aos="fade-left">
+
+                    <h3 class="text-2xl sm:text-3xl font-bold text-[#0f172a]">
+                        I'm Chetan
+                    </h3>
+
+                    <p class="mt-2 text-[#ff7613] font-semibold">
+                        Full Stack Developer | AI Innovator | Problem Solver
+                    </p>
+
+                    <p class="mt-6 text-[#334155] leading-relaxed">
+                        I am a passionate and results-driven software developer with expertise in
+                        <span class="font-semibold text-[#0f172a]">web development</span> and
+                        <span class="font-semibold text-[#0f172a]">machine learning</span>.
+                        My technical toolkit includes HTML, CSS, JavaScript, Django, SQL, Python,
+                        along with Java and strong foundations in data structures and algorithms.
+                        <br><br>
+                        I specialize in building dynamic, user-friendly applications and intelligent systems
+                        that solve real-world problems. I thrive on exploring new technologies
+                        and transforming ideas into impactful digital solutions.
+                    </p>
+
+                    <!-- Info Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 text-left">
+
+                        <div class="bg-[#f8fafc] p-5 rounded-xl shadow-sm">
+                            <p class="text-sm text-gray-500">Age</p>
+                            <p class="font-semibold text-[#0f172a]">20</p>
+                        </div>
+
+                        <div class="bg-[#f8fafc] p-5 rounded-xl shadow-sm">
+                            <p class="text-sm text-gray-500">Location</p>
+                            <p class="font-semibold text-[#0f172a]">Jalgaon, India</p>
+                        </div>
+
+                        <div class="bg-[#f8fafc] p-5 rounded-xl shadow-sm">
+                            <p class="text-sm text-gray-500">Phone</p>
+                            <p class="font-semibold text-[#0f172a]">+91 827-554-0085</p>
+                        </div>
+
+                        <div class="bg-[#f8fafc] p-5 rounded-xl shadow-sm">
+                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="font-semibold text-[#0f172a] break-all">
+                                02ckwani@gmail.com
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Resume Button -->
+                    <div class="mt-10">
+                        <a href="resume.html" target="_blank" class="inline-flex items-center gap-2 
+                    px-8 py-4 rounded-full font-semibold 
+                    text-white bg-[#ff7613] 
+                    hover:bg-[#e65c00] 
+                    transition duration-300 shadow-lg 
+                    hover:shadow-orange-400/40">
+                            Resume
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- about section ends here  -->
+
+    <!-- contact section starts from here  -->
+    <section id="contact" class="relative py-24 overflow-hidden
+       bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
+
+        <!-- Floating Shapes -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Heading -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
+                    Get in <span class="text-[#ff7613]">Touch</span>
+                </h2>
+
+                <p class="mt-6 max-w-2xl mx-auto text-[#475569] text-lg">
+                    Have a project in mind or want to collaborate? Let’s connect and build something impactful together.
+                </p>
+
+                <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Contact Layout -->
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                <!-- LEFT IMAGE -->
+                <div class="flex justify-center lg:justify-start w-full lg:w-1/2" data-aos="fade-right">
+
+                    <div class="tilt-card">
+                        <img src="./assets/images/contact1.png" alt="Contact Illustration" class="w-72 sm:w-96 lg:w-[420px] 
+                      rounded-3xl shadow-2xl 
+                      border border-[#ff7613]/30">
+                    </div>
+
+                </div>
+
+                <!-- RIGHT FORM -->
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+
+                    <form id="contact-form" class="bg-white p-8 sm:p-10 rounded-2xl shadow-xl">
+
+                        <div class="grid grid-cols-1 gap-6">
+
+                            <div>
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" required class="form-input">
+                            </div>
+
+                            <div>
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" required class="form-input">
+                            </div>
+
+                            <div>
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="phone" class="form-input">
+                            </div>
+
+                            <div>
+                                <label class="form-label">Message</label>
+                                <textarea name="message" rows="5" required class="form-input resize-none"></textarea>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="submit" class="w-full py-4 rounded-full font-semibold
+                             text-white bg-[#ff7613]
+                             hover:bg-[#e65c00]
+                             transition duration-300 shadow-lg
+                             hover:shadow-orange-400/40">
+                                    Send Message
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- contact section ends here  -->
+
+    <!-- footer section starts from here  -->
+    <footer class="bg-[#0f172a] text-gray-300 py-10">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row 
+                items-center justify-between gap-6">
+
+                <!-- Left -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold text-white">
+                        Aman Srivastava
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1">
+                        Full Stack Developer | Building modern digital solutions
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center gap-5">
+
+                    <a href="https://github.com/yourusername" target="_blank" class="footer-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="footer-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="mailto:your@email.com" class="footer-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
+                © <span id="year"></span> Aman Srivastava. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- footer section ends here  -->
+
+
+
+    <!-- Particles.js script linking  -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- tilt.js linking  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+            max: 12,              // tilt angle (keep subtle)
+            speed: 400,           // animation speed
+            glare: true,          // enable glare
+            "max-glare": 0.2,     // subtle glare
+            scale: 1.03,          // slight zoom on hover
+            perspective: 1000     // depth
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+
+    <!-- typed.js cdn linking  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.js"></script>
+
+
+    <!-- js file linking  -->
+    <script src="./js/main.js"></script>
+
+    <!-- jquery linking  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- vanilla tilt.js linking  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <!-- font awesome linking  -->
+    <script src="https://kit.fontawesome.com/9838733d2a.js" crossorigin="anonymous"></script>
+
+    <!-- lordicon script linking  -->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</body>
+
+</html>
