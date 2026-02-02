@@ -123,3 +123,48 @@ var typed = new Typed(".typing-text", {
     showCursor: true,
     cursorChar: "|"
 });
+
+
+
+// social media icons hides when reaches footer 
+const socialBar = document.querySelector(".social-bar");
+const footer = document.getElementById("footer");
+
+window.addEventListener("scroll", () => {
+
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    // Only apply on laptop / desktop
+    if (window.innerWidth > 1200) {
+
+        if (footerTop < windowHeight - 100) {
+            socialBar.style.opacity = "0";
+            socialBar.style.pointerEvents = "none";
+        } else {
+            socialBar.style.opacity = "1";
+            socialBar.style.pointerEvents = "auto";
+        }
+
+    }
+
+});
+
+        // Magnetic Hover Effect
+        const socialItems = document.querySelectorAll(".social-item");
+
+        socialItems.forEach(item => {
+
+            item.addEventListener("mousemove", function (e) {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                item.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+
+            item.addEventListener("mouseleave", function () {
+                item.style.transform = "translate(0, 0)";
+            });
+
+        })

@@ -21,6 +21,10 @@
 
     <!-- External styling  -->
     <style>
+        body {
+            overflow-x: hidden;
+        }
+
         .nav-link {
             position: relative;
             color: inherit;
@@ -63,6 +67,56 @@
         .typed-cursor {
             color: #ff7613;
             font-weight: bold;
+        }
+
+        /* fixed social media icons styling */
+        .social-bar {
+            position: fixed;
+            left: 10px;
+            /* moved closer to edge */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            z-index: 50;
+            transition: opacity 0.4s ease;
+
+        }
+
+        /* Vertical Line */
+        .social-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, #ff7613, transparent);
+        }
+
+        /* Icon */
+        .social-item {
+            width: 42px;
+            height: 42px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Clean Hover */
+        .social-item:hover {
+            color: #ff7613;
+            transform: translateX(5px);
+        }
+
+        /* Hide on smaller laptops & tablets */
+        @media (max-width: 1200px) {
+            .social-bar {
+                display: none;
+            }
         }
 
         /* skills section  */
@@ -165,18 +219,20 @@
 
         /* services section styling */
         .service-card {
+            position: relative;
             background: white;
             padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
+
 
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 118, 19, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
+
 
         .service-card h3 {
             font-size: 18px;
@@ -312,45 +368,39 @@
 
 <body>
     <!-- navbar starts from here  -->
-    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300
+bg-[#0f172a] border-b border-[#1e293b]">
 
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-center h-20">
 
-                <!-- Logo (Left) -->
+                <!-- Logo -->
                 <a href="#home" class="flex items-center gap-2 group">
                     <lord-icon src="https://cdn.lordicon.com/hmabmtlg.json" trigger="hover"
-                        colors="primary:#ff7613,secondary:#0f172a" style="width:38px;height:38px">
+                        colors="primary:#22d3ee,secondary:#38bdf8" style="width:38px;height:38px">
                     </lord-icon>
 
-                    <span class="text-2xl font-extrabold tracking-wide
-          bg-gradient-to-r from-[#ff7613] to-[#e65c00]
-          bg-clip-text text-transparent">
-                        Aman.
-                    </span>
+                    <span
+                        class="text-2xl font-extrabold tracking-wide bg-gradient-to-r from-[#ff7613] to-[#e65c00] bg-clip-text text-transparent">
+                        Aman. </span>
                 </a>
 
-                <!-- Spacer pushes nav to right -->
+                <!-- Desktop Nav -->
                 <div class="ml-auto hidden md:flex items-center gap-10
-           font-medium text-slate-700 dark:text-gray-300">
+            font-medium text-gray-300">
 
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#home" class="nav-link hover:text-cyan-400 transition duration-300">Home</a>
+                    <a href="#skills" class="nav-link hover:text-cyan-400 transition duration-300">Skills</a>
+                    <a href="#projects" class="nav-link hover:text-cyan-400 transition duration-300">Projects</a>
+                    <a href="#services" class="nav-link hover:text-cyan-400 transition duration-300">Services</a>
+                    <a href="#experience" class="nav-link hover:text-cyan-400 transition duration-300">Experience</a>
+                    <a href="#about" class="nav-link hover:text-cyan-400 transition duration-300">About</a>
+                    <a href="#contact" class="nav-link hover:text-cyan-400 transition duration-300">Contact</a>
 
-                    <!-- Dark mode -->
-                    <!-- <button id="theme-toggle"
-          class="text-xl text-[#ff7613] hover:scale-110 transition">
-          🌙
-        </button> -->
                 </div>
 
                 <!-- Mobile Button -->
-                <button id="menu-btn" class="ml-auto md:hidden text-2xl text-slate-700 dark:text-gray-300">
+                <button id="menu-btn" class="ml-auto md:hidden text-2xl text-gray-300 hover:text-cyan-400 transition">
                     ☰
                 </button>
 
@@ -358,19 +408,18 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden backdrop-blur-xl bg-white/80 dark:bg-[#0f172a]/90">
-            <div class="px-6 py-6 space-y-4 font-medium">
-                <a href="#home" class="block nav-link">Home</a>
-                <a href="#about" class="block nav-link">About</a>
-                <a href="#skills" class="block nav-link">Skills</a>
-                <a href="#projects" class="block nav-link">Projects</a>
-                <a href="#services" class="block nav-link">Services</a>
-                <a href="#experience" class="block nav-link">Experience</a>
-                <a href="#contact" class="block nav-link">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0f172a] border-t border-[#1e293b]">
+            <div class="px-6 py-6 space-y-4 font-medium text-gray-300">
+                <a href="#home" class="block hover:text-cyan-400 transition">Home</a>
+                <a href="#about" class="block hover:text-cyan-400 transition">About</a>
+                <a href="#skills" class="block hover:text-cyan-400 transition">Skills</a>
+                <a href="#projects" class="block hover:text-cyan-400 transition">Projects</a>
+                <a href="#services" class="block hover:text-cyan-400 transition">Services</a>
+                <a href="#experience" class="block hover:text-cyan-400 transition">Experience</a>
+                <a href="#contact" class="block hover:text-cyan-400 transition">Contact</a>
             </div>
         </div>
     </header>
-    <!-- Spacer -->
     <div class="h-20"></div>
     <!-- navbar ends here  -->
 
@@ -381,7 +430,7 @@
         <div id="particles-js" class="absolute inset-0 z-0"></div>
 
         <!-- Content Wrapper -->
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-24">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-12">
 
             <div class="flex flex-col lg:flex-row 
                 items-center justify-between gap-16">
@@ -411,6 +460,12 @@
 
                     </p>
 
+                    <p class="mt-6 text-gray-400 max-w-2xl" data-aos="fade-up">
+                        I’m a passionate Frontend Developer focused on crafting clean,
+                        scalable, and performance-driven web applications that elevate
+                        user experience.
+                    </p>
+
                     <!-- Buttons -->
                     <div class="mt-10 flex flex-row 
             items-center justify-center 
@@ -420,8 +475,19 @@
                     text-white bg-[#ff7613] 
                     hover:bg-[#e65c00] 
                     transition duration-300 shadow-lg 
-                    hover:shadow-orange-400/40">
-                            About Me
+                    hover:shadow-orange-400/40 group relative inline-flex items-center justify-center overflow-hidden">
+                            <div
+                                class="translate-y-0 opacity-100 transition group-hover:-translate-y-[150%] group-hover:opacity-0">
+                                About me</div>
+                            <div
+                                class="absolute translate-y-[150%] opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="h-6 w-6">
+                                    <path
+                                        d="M7.5 2C7.77614 2 8 2.22386 8 2.5L8 11.2929L11.1464 8.14645C11.3417 7.95118 11.6583 7.95118 11.8536 8.14645C12.0488 8.34171 12.0488 8.65829 11.8536 8.85355L7.85355 12.8536C7.75979 12.9473 7.63261 13 7.5 13C7.36739 13 7.24021 12.9473 7.14645 12.8536L3.14645 8.85355C2.95118 8.65829 2.95118 8.34171 3.14645 8.14645C3.34171 7.95118 3.65829 7.95118 3.85355 8.14645L7 11.2929L7 2.5C7 2.22386 7.22386 2 7.5 2Z"
+                                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
                         </a>
 
                         <a href="#contact" class="px-8 py-4 rounded-full font-semibold 
@@ -431,7 +497,6 @@
                     transition duration-300">
                             Hire Me
                         </a>
-
                     </div>
 
                 </div>
@@ -451,11 +516,32 @@
 
             </div>
         </div>
+        <!-- Floating Social Bar -->
+        <div class="social-bar">
+
+            <div class="social-line"></div>
+
+            <a href="https://www.linkedin.com/in/aman-srivastava-ab6820233/" target="_blank" class="social-item">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/theAman30" target="_blank" class="social-item">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://twitter.com/yourusername" target="_blank" class="social-item">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+
+            <a href="https://instagram.com/yourusername" target="_blank" class="social-item">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
     </section>
     <!-- Hero Section Ends Here  -->
 
     <!-- skills section starts from here -->
-    <section id="skills" class="py-24 bg-[#f8fafc]">
+    <section id="skills" class="py-12 bg-[#f8fafc]">
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <!-- Heading -->
@@ -603,7 +689,7 @@
     <!-- skills section ends here  -->
 
     <!-- projects section starts from here  -->
-    <section id="projects" class="py-24 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
+    <section id="projects" class="py-12 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -625,16 +711,16 @@
                 <!-- Project Card 1 -->
                 <div class="project-card tilt-card" data-aos="zoom-in">
 
-                    <img src="./assets/project1.png" alt="Project" class="rounded-t-2xl">
+                    <img src="./assets/projects/Project1.png" alt="Project" class="rounded-t-2xl">
 
                     <div class="p-6">
 
                         <h3 class="text-xl font-bold text-[#0f172a]">
-                            StayFinder
+                            Himvati Foods Pvt Ltd
                         </h3>
 
                         <p class="mt-3 text-[#475569] text-sm leading-relaxed">
-                            A full-stack Airbnb-style platform with authentication, booking system, and responsive UI.
+                            E-commerce product website with cart functionality and WhatsApp order integration.
                         </p>
 
                         <div class="flex flex-wrap gap-2 mt-4">
@@ -644,26 +730,26 @@
                         </div>
 
                         <div class="flex justify-between mt-6">
-                            <a href="#" class="project-link">Live</a>
-                            <a href="#" class="project-link">Code</a>
+                            <a href="https://www.himspices.com" target="_blank" class="project-link">Live</a>
+                            <a href="https://github.com/himvatifoods/Himvati-Foods-Pvt.-Ltd" target="_blank"
+                                class="project-link">Code</a>
                         </div>
-
                     </div>
                 </div>
 
                 <!-- Project Card 2 -->
                 <div class="project-card tilt-card" data-aos="zoom-in" data-aos-delay="150">
 
-                    <img src="./assets/project2.png" alt="Project" class="rounded-t-2xl">
+                    <img src="./assets/projects/Project2.png" alt="Project" class="rounded-t-2xl">
 
                     <div class="p-6">
 
                         <h3 class="text-xl font-bold text-[#0f172a]">
-                            Him Spices Website
+                            Ghaziabad District Boxing Association
                         </h3>
 
                         <p class="mt-3 text-[#475569] text-sm leading-relaxed">
-                            E-commerce product website with cart functionality and WhatsApp order integration.
+                            Dynamic GDBA website with player profiles, events, and responsive interactive features.
                         </p>
 
                         <div class="flex flex-wrap gap-2 mt-4">
@@ -673,42 +759,57 @@
                         </div>
 
                         <div class="flex justify-between mt-6">
-                            <a href="#" class="project-link">Live</a>
-                            <a href="#" class="project-link">Code</a>
+                            <a href="https://www.gdba.in" target="_blank" class="project-link">Live</a>
+                            <a href="https://github.com/theAman30/gdba.in" target="_blank" class="project-link">Code</a>
                         </div>
 
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="project-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-card tilt-card relative overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
 
-                    <img src="./assets/project3.png" alt="Project" class="rounded-t-2xl">
+                    <!-- Image -->
+                    <div class="relative">
+                        <img src="./assets/project3.png" alt="Upcoming Project" class="rounded-t-2xl w-full">
+
+                        <!-- Coming Soon Overlay -->
+                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center">
+                            <span class="px-6 py-2 text-sm font-semibold tracking-wider
+                text-cyan-400 border border-cyan-400 rounded-full
+                animate-pulse">
+                                COMING SOON
+                            </span>
+                        </div>
+                    </div>
 
                     <div class="p-6">
 
                         <h3 class="text-xl font-bold text-[#0f172a]">
-                            AI Prediction Model
+                            Client Project (Under Development)
                         </h3>
 
                         <p class="mt-3 text-[#475569] text-sm leading-relaxed">
-                            Machine learning project predicting outcomes using Scikit-learn and Python.
+                            Currently building a fully responsive and dynamic website for a client. Stay tuned for the
+                            launch.
                         </p>
 
                         <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">ML</span>
-                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Frontend</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Responsive</span>
                         </div>
 
-                        <div class="flex justify-between mt-6">
-                            <a href="#" class="project-link">Live</a>
-                            <a href="#" class="project-link">Code</a>
+                        <!-- Disabled Button -->
+                        <div class="flex justify-center mt-6">
+                            <span class="px-5 py-2 text-sm font-medium rounded-full
+                border border-gray-400 text-gray-400 cursor-not-allowed">
+                                Launching Soon
+                            </span>
                         </div>
 
                     </div>
                 </div>
-
             </div>
 
             <!-- View All Button -->
@@ -718,131 +819,136 @@
                 text-white bg-[#ff7613] 
                 hover:bg-[#e65c00] 
                 transition duration-300 shadow-lg 
-                hover:shadow-orange-400/40">
-                    View All
-                    <i class="fas fa-arrow-right"></i>
+                hover:shadow-orange-400/40 group relative justify-center overflow-hidden">
+                    <div
+                        class="translate-x-0 opacity-100 transition group-hover:-translate-x-[150%] group-hover:opacity-0">
+                        View All</div>
+                    <div
+                        class="absolute translate-x-[150%] opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100">
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6">
+                            <path
+                                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
                 </a>
             </div>
-
         </div>
     </section>
-    <!-- projects ends here  -->
+    <!-- projects section ends here  -->
 
     <!-- services section starts from here  -->
-    <section id="services" class="py-24 bg-gradient-to-br from-[#f8fafc] via-white to-[#fff7ed]">
-
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-            <!-- Heading -->
+    <section id="services" class="py-12 bg-gradient-to-br from-[#f8fafc] via-white to-[#fff7ed]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8"> <!-- Heading -->
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]">
-                    My <span class="text-[#ff7613]">Services</span>
-                </h2>
-
-                <p class="mt-6 max-w-3xl mx-auto text-[#475569] text-lg leading-relaxed">
-                    I offer end-to-end digital solutions to help businesses build a strong online presence and achieve
-                    scalable growth.
-                </p>
-
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0f172a]"> My <span
+                        class="text-[#ff7613]">Services</span> </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-[#475569] text-lg leading-relaxed"> I offer end-to-end digital
+                    solutions to help businesses build a strong online presence and achieve scalable growth. </p>
                 <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
             </div>
-
-            <!-- Services Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Service 1 -->
+                <!-- 1 Website Development -->
                 <div class="service-card tilt-card" data-aos="zoom-in">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Custom Website Development</h3>
                     <p>
-                        Responsive, fast, and modern websites built with scalable architecture tailored to your business
-                        needs.
+                        Modern, responsive, and high-performance websites built to match your business goals and brand
+                        identity.
                     </p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="150">
+                <!-- 2 E-commerce -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="service-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3>E-Commerce Solutions</h3>
+                    <h3>E-Commerce Website Setup</h3>
                     <p>
-                        Complete online store setup with product management, payment integration, and optimized user
-                        experience.
+                        Complete online store solutions with product management, cart systems, and WhatsApp/order
+                        integration.
                     </p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
+                <!-- 3 UI/UX -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>Responsive UI/UX Design</h3>
                     <p>
-                        Clean, user-focused interface design ensuring seamless performance across mobile, tablet, and
-                        desktop.
+                        Clean and user-friendly interface designs optimized for mobile, tablet, and desktop devices.
                     </p>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="450">
+                <!-- 4 Graphic Designing -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="service-icon">
-                        <i class="fas fa-server"></i>
+                        <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Backend & API Development</h3>
+                    <h3>Graphic Designing</h3>
                     <p>
-                        Secure and scalable backend systems with RESTful APIs for dynamic and high-performance
-                        applications.
+                        Creative visuals, banners, brand graphics, and marketing materials tailored to your brand.
                     </p>
                 </div>
 
-                <!-- Service 5 -->
+                <!-- 5 Social Media Post Design -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Social Media Post Design</h3>
+                    <p>
+                        Engaging Instagram, Facebook, and promotional post designs to enhance digital presence.
+                    </p>
+                </div>
+
+                <!-- 6 Video Editing -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Editing</h3>
+                    <p>
+                        Professional video editing for promos, reels, ads, and marketing content with smooth transitions
+                        and
+                        effects.
+                    </p>
+                </div>
+
+                <!-- 7 Data Research -->
                 <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h3>AI & Automation Solutions</h3>
+                    <h3>Data Research & Collection</h3>
                     <p>
-                        Intelligent systems and automation tools powered by machine learning to optimize business
-                        processes.
+                        Accurate data gathering, research, and structured data preparation for business and marketing
+                        insights.
                     </p>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="750">
+                <!-- 8 Website Optimization -->
+                <div class="service-card tilt-card" data-aos="zoom-in" data-aos-delay="700">
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Website Optimization & Deployment</h3>
                     <p>
-                        Performance optimization, SEO basics, hosting setup, and smooth deployment to ensure fast load
-                        times.
+                        Performance improvement, SEO basics, hosting setup, and smooth website deployment.
                     </p>
                 </div>
 
             </div>
-
-            <!-- CTA -->
-            <div class="text-center mt-16" data-aos="fade-up">
-                <a href="#contact" class="inline-flex items-center gap-2 
-                px-8 py-4 rounded-full font-semibold 
-                text-white bg-[#ff7613] 
-                hover:bg-[#e65c00] 
-                transition duration-300 shadow-lg 
-                hover:shadow-orange-400/40">
-                    Let’s Work Together
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-        </div>
     </section>
     <!-- services section ends here  -->
 
     <!-- experience section starts from here  -->
-    <section id="experience" class="py-24 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
+    <section id="experience" class="py-12 bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
 
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
@@ -868,13 +974,13 @@
 
                         <div class="timeline-card">
                             <h3 class="text-xl font-bold text-[#0f172a]">
-                                NIK Enterprises Pvt. Ltd.
+                                Freelancer (Self-employed)
                             </h3>
                             <p class="text-[#ff7613] font-semibold mt-2">
-                                Full Stack Developer | Internship
+                                Web Developer
                             </p>
                             <p class="text-[#475569] mt-2">
-                                Aug 2022 – Oct 2022
+                                January 2025 - Present
                             </p>
                         </div>
 
@@ -897,13 +1003,13 @@
 
                         <div class="timeline-card">
                             <h3 class="text-xl font-bold text-[#0f172a]">
-                                QuickAttend (Python OpenCV)
+                                NearDekho
                             </h3>
                             <p class="text-[#ff7613] font-semibold mt-2">
-                                Python ML | Personal Project
+                                Web Developer
                             </p>
                             <p class="text-[#475569] mt-2">
-                                Sept 2023 – Nov 2023
+                                September 2024 - January 2025
                             </p>
                         </div>
 
@@ -917,21 +1023,26 @@
 
                 <!-- Timeline Item 3 -->
                 <div class="flex flex-col md:flex-row items-center">
-
                     <div class="md:w-1/2 md:pr-12 text-center md:text-right" data-aos="fade-right">
-
                         <div class="timeline-card">
+                            <span
+                                class="inline-block text-xs bg-orange-100 text-[#ff7613] px-3 py-1 rounded-full mt-2 mb-2">
+                                Internship
+                            </span>
+                            <span
+                                class="inline-block text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full mt-2 ml-2">
+                                Remote
+                            </span>
                             <h3 class="text-xl font-bold text-[#0f172a]">
-                                Edunet Foundation
+                                Yarasi Tech
                             </h3>
                             <p class="text-[#ff7613] font-semibold mt-2">
-                                AI & ML | AICTE–Microsoft–SAP Internship
+                                JavaScript Developer
                             </p>
                             <p class="text-[#475569] mt-2">
-                                Dec 2024 – Jan 2025
+                                May 2024 - July 2024
                             </p>
                         </div>
-
                     </div>
 
                     <!-- Circle -->
@@ -941,28 +1052,13 @@
 
                     <div class="md:w-1/2"></div>
                 </div>
-
             </div>
-
-            <!-- View All -->
-            <div class="text-center mt-20" data-aos="fade-up">
-                <a href="./experience" class="inline-flex items-center gap-2 
-                px-8 py-4 rounded-full font-semibold 
-                text-white bg-[#ff7613] 
-                hover:bg-[#e65c00] 
-                transition duration-300 shadow-lg 
-                hover:shadow-orange-400/40">
-                    View All
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
         </div>
     </section>
     <!-- experience section ends here  -->
 
     <!-- About section starts from here  -->
-    <section id="about" class="py-24 bg-white">
+    <section id="about" class="py-12 bg-white">
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -1060,7 +1156,7 @@
     <!-- about section ends here  -->
 
     <!-- contact section starts from here  -->
-    <section id="contact" class="relative py-24 overflow-hidden
+    <section id="contact" class="relative py-12 overflow-hidden
        bg-gradient-to-br from-white via-[#f8fafc] to-[#fff7ed]">
 
         <!-- Floating Shapes -->
@@ -1081,7 +1177,8 @@
                 </h2>
 
                 <p class="mt-6 max-w-2xl mx-auto text-[#475569] text-lg">
-                    Have a project in mind or want to collaborate? Let’s connect and build something impactful together.
+                    Have a project in mind or want to collaborate? Let’s connect and build something impactful
+                    together.
                 </p>
 
                 <div class="w-24 h-1 bg-[#ff7613] mx-auto mt-4 rounded-full"></div>
@@ -1151,7 +1248,7 @@
     <!-- contact section ends here  -->
 
     <!-- footer section starts from here  -->
-    <footer class="bg-[#0f172a] text-gray-300 py-10">
+    <footer id="footer" class="bg-[#0f172a] text-gray-300 py-12">
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
